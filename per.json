@@ -1,0 +1,28 @@
+[
+    {
+    "threshold": 1,
+    "keys": [],
+    "accounts": [
+        {
+            "permission": {
+                "actor": "kun2",
+                "permission": "active"
+            },
+            "weight": 1
+        }
+    ]
+},
+{
+    "threshold": 1,
+    "keys": [
+        {
+            "permission": {
+                "key": "EOS8ZZCicammR45b9tQUSU8VHqX4M8oFM89Cs8tFFWYgUGasegnnV",
+                "permission": "active"
+            },
+            "weight": 1
+        }
+    ]
+}
+]
+

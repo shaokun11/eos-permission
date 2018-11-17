@@ -1,0 +1,53 @@
+
+Usage: cleos set account permission [OPTIONS] account permission authority [parent]
+
+Positionals:
+  account TEXT                The account to set/delete a permission authority for (required)
+  permission TEXT             The permission name to set/delete an authority for (required)
+  authority TEXT              [delete] NULL, [create/update] public key, JSON string, or filename defining the authority (required)
+  parent TEXT                 [create] The permission name of this parents permission (Defaults to: "Active")
+
+// 设置权限
+cleos set account permission shaokun11121 add '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"shaokun11122","permission":"active"},"weight":1}]}'
+// 删除权限
+cleos set account permission shaokun11112 say NULL -p shaokun11112@active
+
+
+Positionals:
+  account TEXT                The account to set/delete a permission authority for (required)
+  code TEXT                   The account that owns the code for the action (required)
+  type TEXT                   the type of the action (required)
+  requirement TEXT            [delete] NULL, [set/update] The permission name require for executing the given action (required)
+
+// 为action添加权限
+cleos -u http://jungle.cryptolions.io:18888  set action permission shaokun11121 shaokun11121 add add
+
+// 编译合约
+eosio-cpp -abigen learnper2.cpp learnper2.wasm
+
+shaokun11121
+Private key: 5KFoeWx69fjPj7mTDbcD9JauYd9LLjikYTa9Qg7N5CVZTqZrzNG
+Public key: EOS69w5V46oUaBD5PSx3AMRxWXPi6b3St2PwbX9kBPY6tZvSs65o1
+
+shaokun11122
+Private key: 5HrJQ9eepF6FuG47eSJprxoFQ6PWRkombbWEwxoSQr6FJ1wQPbg
+Public key: EOS8ZZCicammR45b9tQUSU8VHqX4M8oFM89Cs8tFFWYgUGasegnnV
+
+wallet
+PW5JDMNLnob7V3AiENZWjZWXkENyASmK57NFh2HeyaFaUf5fPNPNR
+
+cleos -u http://jungle.cryptolions.io:18888  system buyram shaokun11121 shaokun11121 -k 256
+cleos -u http://jungle.cryptolions.io:18888  set contract shaokun11121 ./learnper2/ -p shaokun11121@active
+cleos -u http://jungle.cryptolions.io:18888  get table shaokun11121 shaokun11121 student
+cleos -u http://jungle.cryptolions.io:18888  push action shaokun11121 add '{"user":"shaokun11121","msg":"i am shaokun"}' -p shaokun11121@active
+cleos -u http://jungle.cryptolions.io:18888  get account shaokun11121
+cleos -u http://jungle.cryptolions.io:18888  push action shaokun11121 add '{"user":"shaokun11121","msg":"i am shaokun add"}' -p shaokun11121@add
+
+cleos -u http://jungle.cryptolions.io:18888  get account shaokun11121
+cleos -u http://jungle.cryptolions.io:18888  get account shaokun11122
+cleos wallet keys
+cleos -u http://jungle.cryptolions.io:18888  get table shaokun11121 shaokun11121 student
+cleos -u http://jungle.cryptolions.io:18888  push action shaokun11121 add '{"user":"shaokun11121","msg":"i am shaokun"}' -p shaokun11121@add
+cleos -u http://jungle.cryptolions.io:18888  get table shaokun11121 shaokun11121 student
+
+
